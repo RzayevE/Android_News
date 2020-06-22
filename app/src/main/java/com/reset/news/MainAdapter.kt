@@ -25,10 +25,14 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
         holder.itemView.newsTitle_text?.text = news.title
         val newsImageView = holder.itemView.item_image
         val imageUrl = news.urlToImage.toString()
-        Picasso.get()
-            .load(imageUrl)
-            .into(newsImageView)
-        Picasso.get().isLoggingEnabled = true
+        if (imageUrl.isNullOrEmpty()) {
+            return
+        } else {
+            Picasso.get()
+                .load(imageUrl)
+                .into(newsImageView)
+            Picasso.get().isLoggingEnabled = true
+        }
 
     }
 

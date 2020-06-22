@@ -11,7 +11,7 @@ import com.reset.news.HomeFeed
 import com.reset.news.MainAdapter
 
 import com.reset.news.R
-import kotlinx.android.synthetic.main.fragment_politics.*
+import kotlinx.android.synthetic.main.second_tab_fragment.*
 import okhttp3.*
 import java.io.IOException
 
@@ -22,7 +22,7 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SecondTabFragment.newInstance] factory method to
+ * Use the [FifthTabFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class SecondTabFragment : Fragment() {
@@ -43,12 +43,12 @@ class SecondTabFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_politics, container, false)
+        return inflater.inflate(R.layout.second_tab_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rw_politics.layoutManager = LinearLayoutManager(context)
+        rw_two.layoutManager = LinearLayoutManager(context)
 
         fetchJson()
     }
@@ -79,7 +79,7 @@ class SecondTabFragment : Fragment() {
                 val homeFeed = gson.fromJson(body, HomeFeed::class.java)
 
                 activity?.runOnUiThread {
-                    rw_politics.adapter = MainAdapter(homeFeed)
+                    rw_two.adapter = MainAdapter(homeFeed)
                 }
             }
         })
@@ -98,7 +98,7 @@ class SecondTabFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SecondTabFragment().apply {
+            FifthTabFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

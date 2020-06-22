@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.reset.news.HomeFeed
 import com.reset.news.MainAdapter
+
 import com.reset.news.R
-import kotlinx.android.synthetic.main.first_tab_fragment.*
+import kotlinx.android.synthetic.main.fifth_tab_fragment.*
+import kotlinx.android.synthetic.main.fourth_tab_fragment.*
 import okhttp3.*
 import java.io.IOException
 
@@ -21,10 +23,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FirstTabFragment.newInstance] factory method to
+ * Use the [FifthTabFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FirstTabFragment : Fragment() {
+class FifthTabFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,8 +37,6 @@ class FirstTabFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
     }
 
     override fun onCreateView(
@@ -44,24 +44,27 @@ class FirstTabFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.first_tab_fragment, container, false)
+        return inflater.inflate(R.layout.fifth_tab_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rw_one.layoutManager = LinearLayoutManager(context)
-//        rw_main.adapter = mainAdapter
+        rw_five.layoutManager = LinearLayoutManager(context)
 
         fetchJson()
     }
 
     fun fetchJson() {
+        println("Attempting to Fetch Json")
+
         val api_key = getString(R.string.api_key)
         val country = getString(R.string.country)
+        val category = getString(R.string.cat_entertainment)
         val url_part1 = "https://newsapi.org/v2/top-headlines?country="
-        val url_part2 = "&apiKey="
+        val url_part2 = "&category="
+        val url_part3 = "&apiKey="
 
-        val url = url_part1 + country + url_part2 + api_key
+        val url = url_part1 + country + url_part2 + category + url_part3 + api_key
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue(object : Callback {
@@ -71,15 +74,13 @@ class FirstTabFragment : Fragment() {
 
             override fun onResponse(call: Call, response: Response) {
                 val body = response.body?.string()
-                println(body)
 
                 val gson = GsonBuilder().create()
 
                 val homeFeed = gson.fromJson(body, HomeFeed::class.java)
 
                 activity?.runOnUiThread {
-                    rw_one.adapter = MainAdapter(homeFeed)
-
+                    rw_five.adapter = MainAdapter(homeFeed)
                 }
             }
         })
@@ -93,12 +94,12 @@ class FirstTabFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment MainPage.
+         * @return A new instance of fragment Politics.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FirstTabFragment().apply {
+            FifthTabFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

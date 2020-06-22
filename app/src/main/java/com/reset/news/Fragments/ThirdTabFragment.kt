@@ -11,7 +11,7 @@ import com.reset.news.HomeFeed
 import com.reset.news.MainAdapter
 
 import com.reset.news.R
-import kotlinx.android.synthetic.main.fragment_sports.*
+import kotlinx.android.synthetic.main.third_tab_fragment.*
 import okhttp3.*
 import java.io.IOException
 
@@ -43,12 +43,12 @@ class ThirdTabFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sports, container, false)
+        return inflater.inflate(R.layout.third_tab_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rw_sports.layoutManager = LinearLayoutManager(context)
+        rw_three.layoutManager = LinearLayoutManager(context)
         fetchJson()
     }
 
@@ -77,7 +77,7 @@ class ThirdTabFragment : Fragment() {
                 val homeFeed = gson.fromJson(body, HomeFeed::class.java)
 
                 activity?.runOnUiThread {
-                    rw_sports.adapter = MainAdapter(homeFeed)
+                    rw_three.adapter = MainAdapter(homeFeed)
                 }
             }
         })
