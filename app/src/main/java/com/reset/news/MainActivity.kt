@@ -12,10 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.reset.news.Fragments.FirstTabFragment
-import com.reset.news.Fragments.FifthTabFragment
-import com.reset.news.Fragments.SixthTabFragment
-import com.reset.news.Fragments.ThirdTabFragment
+import com.reset.news.Fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -37,9 +34,9 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, region, Toast.LENGTH_LONG).show()
 
         viewPagerAdapter.addFragment(FirstTabFragment(), getString(R.string.tab_text_1))
-        viewPagerAdapter.addFragment(FifthTabFragment(), getString(R.string.tab_text_2))
+        viewPagerAdapter.addFragment(SecondTabFragment(), getString(R.string.tab_text_2))
         viewPagerAdapter.addFragment(ThirdTabFragment(), getString(R.string.tab_text_3))
-        viewPagerAdapter.addFragment(FifthTabFragment(), getString(R.string.tab_text_4))
+        viewPagerAdapter.addFragment(FourthTabFragment(), getString(R.string.tab_text_4))
         viewPagerAdapter.addFragment(FifthTabFragment(), getString(R.string.tab_text_5))
         viewPagerAdapter.addFragment(SixthTabFragment(), getString(R.string.tab_text_6))
 
