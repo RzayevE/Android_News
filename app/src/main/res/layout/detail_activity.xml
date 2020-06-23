@@ -32,8 +32,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintTop_toBottomOf="@+id/details_title_text"
         app:layout_constraintLeft_toLeftOf="parent"
         android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/details_published_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/details_desc_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="10dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

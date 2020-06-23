@@ -23,7 +23,9 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val news = homeFeed.articles.get(position)
+        val date = news.publishedAt.split('T').get(0)
         holder.itemView.newsTitle_text?.text = news.title
+        holder.itemView.newsDate_text.text = date
         val newsImageView = holder.itemView.item_image
         val imageUrl = news.urlToImage
         if (imageUrl.isNullOrEmpty()) {

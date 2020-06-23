@@ -17,9 +17,13 @@ class DetailsActivity : AppCompatActivity() {
         val details_image: ImageView = findViewById(R.id.details_image)
         val details_title: TextView = findViewById(R.id.details_title_text)
         val details_desc: TextView = findViewById(R.id.details_desc_text)
+        val details_published: TextView = findViewById(R.id.details_published_text)
 
+        val publishedDate = intent.getStringExtra("publishedAt")
+        val strs = publishedDate.split("T").get(0)
         details_title.text = intent.getStringExtra("title")
         details_desc.text = intent.getStringExtra("desc")
+        details_published.text = strs
         val imageUrl = intent.getStringExtra("imageUrl")
         if (imageUrl.isNullOrEmpty()) {
             return
