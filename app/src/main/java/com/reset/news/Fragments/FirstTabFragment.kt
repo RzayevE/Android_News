@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.reset.news.HomeFeed
@@ -62,15 +63,17 @@ class FirstTabFragment : Fragment() {
     fun fetchJson() {
         val api_key = getString(R.string.api_key)
         val country = getString(R.string.country)
+        val pageSize = getString(R.string.pageSize)
         val url_part1 = "https://newsapi.org/v2/top-headlines?country="
-        val url_part2 = "&apiKey="
+        val url_part3 = "&apiKey="
+        val url_part2 = "&pageSize="
 
-        val url = url_part1 + country + url_part2 + api_key
+        val url = url_part1 + country + url_part2 + pageSize + url_part3 + api_key
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-
+                Toast.makeText(context, "Couldn't load data from API.", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call, response: Response) {

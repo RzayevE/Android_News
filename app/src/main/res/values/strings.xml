@@ -1,13 +1,20 @@
 <resources>
     <string name="app_name">News</string>
+
+    <!--    TAB NAMES-->
     <string name="tab_text_1">Main Page</string>
     <string name="tab_text_2">Business</string>
     <string name="tab_text_3">Sports</string>
     <string name="tab_text_4">Health</string>
     <string name="tab_text_5">Entertainment</string>
     <string name="tab_text_6">Technology</string>
+
+    <!--    API URL -->
     <string name="api_key">b8140e25c45043e98f82345d01f1b5c4</string>
     <string name="country">ru</string>
+    <string name="pageSize">100</string>
+
+    <!--    Categories-->
     <string name="cat_business">business</string>
     <string name="cat_sports">sports</string>
     <string name="cat_health">health</string>

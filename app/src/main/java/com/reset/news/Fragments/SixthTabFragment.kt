@@ -63,11 +63,14 @@ class SixthTabFragment : Fragment() {
         val api_key = getString(R.string.api_key)
         val country = getString(R.string.country)
         val category = getString(R.string.cat_technology)
+        val pageSize = getString(R.string.pageSize)
         val url_part1 = "https://newsapi.org/v2/top-headlines?country="
         val url_part2 = "&category="
-        val url_part3 = "&apiKey="
+        val url_part3 = "&pageSize="
+        val url_part4 = "&apiKey="
 
-        val url = url_part1 + country + url_part2 + category + url_part3 + api_key
+        val url =
+            url_part1 + country + url_part2 + category + url_part3 + pageSize + url_part4 + api_key
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue(object : Callback {
