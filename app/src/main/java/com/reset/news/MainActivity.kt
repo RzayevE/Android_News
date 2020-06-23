@@ -1,6 +1,11 @@
 package com.reset.news
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         val tabLayout: TabLayout = findViewById(R.id.tab_layout)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
         val viewPagerAdapter = viewPagerAdapter(supportFragmentManager)
+        val region = intent.getStringExtra("region")
+
+        Toast.makeText(this, region, Toast.LENGTH_LONG).show()
 
         viewPagerAdapter.addFragment(FirstTabFragment(), getString(R.string.tab_text_1))
         viewPagerAdapter.addFragment(FifthTabFragment(), getString(R.string.tab_text_2))
@@ -38,6 +46,44 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = viewPagerAdapter
         tabLayout.setupWithViewPager(viewPager)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.region1 -> {
+                val intent = Intent(this, MainActivity::class.java)
+                val region = "ru"
+                intent.putExtra("region", region)
+                finish()
+                startActivity(intent)
+//                Toast.makeText(this, item.title, Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.region2 -> {
+                val intent = Intent(this, MainActivity::class.java)
+                val region = "us"
+                intent.putExtra("region", region)
+                finish()
+                startActivity(intent)
+//                Toast.makeText(this, item.title, Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.region3 -> {
+                val intent = Intent(this, MainActivity::class.java)
+                val region = "tr"
+                intent.putExtra("region", region)
+                finish()
+                startActivity(intent)
+//                Toast.makeText(this, item.title, Toast.LENGTH_LONG).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     internal class viewPagerAdapter(fragmentManager: FragmentManager) :

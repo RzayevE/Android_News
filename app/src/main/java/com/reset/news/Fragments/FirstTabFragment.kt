@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.reset.news.HomeFeed
+import com.reset.news.MainActivity
 import com.reset.news.MainAdapter
 import com.reset.news.R
 import kotlinx.android.synthetic.main.first_tab_fragment.*
@@ -61,14 +62,19 @@ class FirstTabFragment : Fragment() {
     }
 
     fun fetchJson() {
+        var region = ""
+        if (activity?.intent?.hasExtra("region")!!) {
+            region = requireActivity().intent.getStringExtra("region")!!
+        } else {
+            region = "ru"
+        }
         val api_key = getString(R.string.api_key)
-        val country = getString(R.string.country)
         val pageSize = getString(R.string.pageSize)
         val url_part1 = "https://newsapi.org/v2/top-headlines?country="
         val url_part3 = "&apiKey="
         val url_part2 = "&pageSize="
 
-        val url = url_part1 + country + url_part2 + pageSize + url_part3 + api_key
+        val url = url_part1 + region + url_part2 + pageSize + url_part3 + api_key
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue(object : Callback {

@@ -60,8 +60,14 @@ class SecondTabFragment : Fragment() {
     fun fetchJson() {
         println("Attempting to Fetch Json")
 
+        var region = ""
+        if (activity?.intent?.hasExtra("region")!!) {
+            region = requireActivity().intent.getStringExtra("region")!!
+        } else {
+            region = "ru"
+        }
+
         val api_key = getString(R.string.api_key)
-        val country = getString(R.string.country)
         val category = getString(R.string.cat_business)
         val pageSize = getString(R.string.pageSize)
         val url_part1 = "https://newsapi.org/v2/top-headlines?country="
@@ -70,7 +76,7 @@ class SecondTabFragment : Fragment() {
         val url_part4 = "&apiKey="
 
         val url =
-            url_part1 + country + url_part2 + category + url_part3 + pageSize + url_part4 + api_key
+            url_part1 + region + url_part2 + category + url_part3 + pageSize + url_part4 + api_key
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue(object : Callback {

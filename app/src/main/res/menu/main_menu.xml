@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Russian"
+        android:id="@+id/region1" />
+    <item
+        android:title="English"
+        android:id="@+id/region2" />
+    <item
+        android:title="Turkish"
+        android:id="@+id/region3" />
+</menu>

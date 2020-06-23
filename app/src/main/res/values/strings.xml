@@ -11,7 +11,6 @@
 
     <!--    API URL -->
     <string name="api_key">b8140e25c45043e98f82345d01f1b5c4</string>
-    <string name="country">ru</string>
     <string name="pageSize">100</string>
 
     <!--    Categories-->
