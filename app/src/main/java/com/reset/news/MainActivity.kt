@@ -29,9 +29,6 @@ class MainActivity : AppCompatActivity() {
         val tabLayout: TabLayout = findViewById(R.id.tab_layout)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
         val viewPagerAdapter = viewPagerAdapter(supportFragmentManager)
-        val region = intent.getStringExtra("region")
-
-        Toast.makeText(this, region, Toast.LENGTH_LONG).show()
 
         viewPagerAdapter.addFragment(FirstTabFragment(), getString(R.string.tab_text_1))
         viewPagerAdapter.addFragment(SecondTabFragment(), getString(R.string.tab_text_2))
