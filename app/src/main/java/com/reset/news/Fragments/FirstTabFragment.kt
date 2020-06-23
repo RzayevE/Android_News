@@ -50,6 +50,10 @@ class FirstTabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rw_one.layoutManager = LinearLayoutManager(context)
+        itemsswipetorefresh_first.setOnRefreshListener {
+            fetchJson()
+            itemsswipetorefresh_first.isRefreshing = false
+        }
 //        rw_main.adapter = mainAdapter
 
         fetchJson()

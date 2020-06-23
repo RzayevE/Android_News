@@ -49,6 +49,10 @@ class SecondTabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rw_two.layoutManager = LinearLayoutManager(context)
+        itemsswipetorefresh_second.setOnRefreshListener {
+            fetchJson()
+            itemsswipetorefresh_second.isRefreshing = false
+        }
 
         fetchJson()
     }

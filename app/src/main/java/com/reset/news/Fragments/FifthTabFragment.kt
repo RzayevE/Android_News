@@ -50,7 +50,10 @@ class FifthTabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rw_five.layoutManager = LinearLayoutManager(context)
-
+        itemsswipetorefresh_fifth.setOnRefreshListener {
+            fetchJson()
+            itemsswipetorefresh_fifth.isRefreshing = false
+        }
         fetchJson()
     }
 

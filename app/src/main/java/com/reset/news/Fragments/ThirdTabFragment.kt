@@ -49,6 +49,10 @@ class ThirdTabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rw_three.layoutManager = LinearLayoutManager(context)
+        itemsswipetorefresh_third.setOnRefreshListener {
+            fetchJson()
+            itemsswipetorefresh_third.isRefreshing = false
+        }
         fetchJson()
     }
 

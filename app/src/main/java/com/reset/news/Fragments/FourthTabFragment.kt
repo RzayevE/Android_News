@@ -49,7 +49,10 @@ class FourthTabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rw_four.layoutManager = LinearLayoutManager(context)
-
+        itemsswipetorefresh_fourth.setOnRefreshListener {
+            fetchJson()
+            itemsswipetorefresh_fourth.isRefreshing = false
+        }
         fetchJson()
     }
 

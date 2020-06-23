@@ -50,7 +50,10 @@ class SixthTabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rw_six.layoutManager = LinearLayoutManager(context)
-
+        itemsswipetorefresh_sixth.setOnRefreshListener {
+            fetchJson()
+            itemsswipetorefresh_sixth.isRefreshing = false
+        }
         fetchJson()
     }
 
