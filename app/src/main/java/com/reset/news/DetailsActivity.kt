@@ -11,6 +11,11 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
+        val actionBar = supportActionBar
+        actionBar!!.title = ""
+
+        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
 
         val details_image: ImageView = findViewById(R.id.details_image)
         val details_title: TextView = findViewById(R.id.details_title_text)
@@ -31,6 +36,11 @@ class DetailsActivity : AppCompatActivity() {
                 .into(details_image)
             Picasso.get().isLoggingEnabled = true
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }
