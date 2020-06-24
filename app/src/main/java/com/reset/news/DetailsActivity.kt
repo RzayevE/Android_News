@@ -12,7 +12,7 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
         val actionBar = supportActionBar
-        actionBar!!.title = ""
+        actionBar!!.title = intent.getStringExtra(CustomViewHolder.CATEGORY_KEY).toUpperCase()
 
         actionBar.setDisplayHomeAsUpEnabled(true)
         actionBar.setDisplayHomeAsUpEnabled(true)

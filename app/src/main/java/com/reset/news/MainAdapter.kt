@@ -1,14 +1,19 @@
 package com.reset.news
 
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.FeatureGroupInfo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item.view.*
+import java.io.Serializable
 
-class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolder>() {
+
+class MainAdapter(val homeFeed: HomeFeed, val category: String) :
+    RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun getItemCount(): Int {
         return homeFeed.articles.size
@@ -25,6 +30,7 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
         val date = news.publishedAt.split('T').get(0)
         holder.itemView.newsTitle_text?.text = news.title
         holder.itemView.newsDate_text.text = date
+        holder.category = category
         val newsImageView = holder.itemView.item_image
         val imageUrl = news.urlToImage
         holder.news = news
@@ -42,7 +48,8 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
 
 }
 
-class CustomViewHolder(val v: View, var news: Article? = null) : RecyclerView.ViewHolder(v) {
+class CustomViewHolder(val v: View, var news: Article? = null, var category: String? = null) :
+    RecyclerView.ViewHolder(v) {
 
     companion object {
         val TITLE_KEY = "title"
@@ -50,6 +57,8 @@ class CustomViewHolder(val v: View, var news: Article? = null) : RecyclerView.Vi
         val DESK_KEY = "desc"
         val AUTHOR_KEY = "author"
         val DATE_KEY = "publishedAt"
+        val CATEGORY_KEY = "category"
+        val FEED_KEY = "feed"
     }
 
     init {
@@ -60,6 +69,7 @@ class CustomViewHolder(val v: View, var news: Article? = null) : RecyclerView.Vi
             intent.putExtra(DESK_KEY, news?.description)
             intent.putExtra(AUTHOR_KEY, news?.author)
             intent.putExtra(DATE_KEY, news?.publishedAt)
+            intent.putExtra(CATEGORY_KEY, category)
 
             it.context.startActivity(intent)
         }

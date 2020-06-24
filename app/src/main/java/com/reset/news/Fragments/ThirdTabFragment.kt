@@ -90,7 +90,7 @@ class ThirdTabFragment : Fragment() {
                 val homeFeed = gson.fromJson(body, HomeFeed::class.java)
 
                 activity?.runOnUiThread {
-                    rw_three.adapter = MainAdapter(homeFeed)
+                    rw_three.adapter = MainAdapter(homeFeed, category)
                 }
             }
         })

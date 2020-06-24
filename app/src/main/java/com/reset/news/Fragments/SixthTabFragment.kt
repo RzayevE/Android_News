@@ -92,7 +92,7 @@ class SixthTabFragment : Fragment() {
                 val homeFeed = gson.fromJson(body, HomeFeed::class.java)
 
                 activity?.runOnUiThread {
-                    rw_six.adapter = MainAdapter(homeFeed)
+                    rw_six.adapter = MainAdapter(homeFeed, category)
                 }
             }
         })

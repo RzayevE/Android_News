@@ -91,7 +91,7 @@ class FirstTabFragment : Fragment() {
                 val homeFeed = gson.fromJson(body, HomeFeed::class.java)
 
                 activity?.runOnUiThread {
-                    rw_one.adapter = MainAdapter(homeFeed)
+                    rw_one.adapter = MainAdapter(homeFeed, "")
 
                 }
             }
